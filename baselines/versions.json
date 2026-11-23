@@ -1,0 +1,104 @@
+[
+  {
+    "component": "CLAHE-ORB-SLAM3",
+    "upstream": "https://github.com/UZ-SLAMLab/ORB_SLAM3.git",
+    "commit": "4452a3c4ab75b1cde34e5505a36ec3f9edcdc4c4",
+    "distribution": "included source with retained license notices"
+  },
+  {
+    "component": "DarkSLAM-ORB-SLAM2",
+    "upstream": "https://github.com/shanpenghui/ORB_SLAM2_fixed.git",
+    "commit": "45417b973a5d0cda6abd56c0da03cd8b29b43fd0",
+    "distribution": "included source with retained license notices"
+  },
+  {
+    "component": "DarkSLAM-EnlightenGAN",
+    "upstream": "https://github.com/arsenyinfo/EnlightenGAN-inference.git",
+    "commit": "6b68a71f0b973912cffad25bff243b28530de823",
+    "distribution": "included source with retained license notices"
+  },
+  {
+    "component": "URRE-Net",
+    "upstream": "https://github.com/Chenxy875/URRE-Net.git",
+    "commit": "0a5fe7bdacc35e441c5581ed63d24a6f392db710",
+    "distribution": "official source link"
+  },
+  {
+    "component": "URRE-Net-ORB-SLAM3",
+    "upstream": "https://github.com/UZ-SLAMLab/ORB_SLAM3.git",
+    "commit": "4452a3c4ab75b1cde34e5505a36ec3f9edcdc4c4",
+    "distribution": "included source with retained license notices"
+  },
+  {
+    "component": "DROID-SLAM",
+    "upstream": "https://github.com/princeton-vl/DROID-SLAM.git",
+    "commit": "2dfd39f0dcad44012ca7bbb8aa70b55edbfa9c99",
+    "distribution": "included source with retained license notices"
+  },
+  {
+    "component": "Zero-DCE",
+    "upstream": "https://github.com/Li-Chongyi/Zero-DCE.git",
+    "commit": "e0f4adc54d0f23348c4a9b84acc08fe8778d5bfd",
+    "distribution": "official source link"
+  },
+  {
+    "component": "Zero-DCE-DROID",
+    "upstream": "https://github.com/princeton-vl/DROID-SLAM.git",
+    "commit": "2dfd39f0dcad44012ca7bbb8aa70b55edbfa9c99",
+    "distribution": "included source with retained license notices"
+  },
+  {
+    "component": "SCI",
+    "upstream": "https://github.com/vis-opt-group/SCI.git",
+    "commit": "f6f88fd73cd614dbeee17d61a0dbde3678b7e183",
+    "distribution": "official source link"
+  },
+  {
+    "component": "SCI-DROID",
+    "upstream": "https://github.com/princeton-vl/DROID-SLAM.git",
+    "commit": "2dfd39f0dcad44012ca7bbb8aa70b55edbfa9c99",
+    "distribution": "included source with retained license notices"
+  },
+  {
+    "component": "AirSLAM",
+    "upstream": "https://github.com/sair-lab/AirSLAM.git",
+    "commit": "d1265771026091db97ee8f7a6d80692f0edd5fef",
+    "distribution": "included source with retained license notices"
+  },
+  {
+    "component": "AirSLAM-g2o",
+    "upstream": "https://github.com/RainerKuemmerle/g2o.git",
+    "commit": "e8df2004e07ea8f5b8e6a8b9f2dc067b45b45036",
+    "distribution": "official source link"
+  },
+  {
+    "component": "IRAF-SLAM",
+    "upstream": "https://github.com/thanhnguyencanh/IRAF-SLAM",
+    "commit": null,
+    "distribution": "included source with retained license notices"
+  },
+  {
+    "component": "Retinexformer",
+    "upstream": "https://github.com/caiyuanhao1998/Retinexformer",
+    "commit": "1e9a0efce4b306b6701b824768370ff26066c32a",
+    "distribution": "included source with retained license notices"
+  },
+  {
+    "component": "RetinexNet",
+    "upstream": "https://github.com/weichen582/RetinexNet",
+    "commit": "fdc15ebc179209d17c77371a825df351a5be3ff5",
+    "distribution": "official source link"
+  },
+  {
+    "component": "KinD",
+    "upstream": "https://github.com/zhangyhuaee/KinD",
+    "commit": "b7d7fcca6d70e1fcb588ad6935ec7750e96c7161",
+    "distribution": "official source link"
+  },
+  {
+    "component": "SNR-Aware",
+    "upstream": "https://github.com/JIA-Lab-research/SNR-Aware-Low-Light-Enhance",
+    "commit": "1113144c82adc8bcc4a9ec27749ed75f196a4e4d",
+    "distribution": "official source link"
+  }
+]

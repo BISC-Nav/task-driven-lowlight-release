@@ -1,0 +1,284 @@
+{
+  "model": "Task-driven low-light model, joint-training step 93032",
+  "training_seed": 0,
+  "stages": [
+    {
+      "name": "image_initialization",
+      "updates": 3000,
+      "size_hw": [
+        192,
+        256
+      ],
+      "lr": 0.0001,
+      "training_sequences": 12,
+      "frame_gap_choices": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "full_image_restoration",
+      "updates": 93032,
+      "size_hw": [
+        384,
+        512
+      ],
+      "lr": 0.0001,
+      "training_sequences": 333,
+      "frame_gap": 1
+    },
+    {
+      "name": "joint_training",
+      "updates": 93032,
+      "size_hw": [
+        384,
+        512
+      ],
+      "lr": 1e-05,
+      "training_sequences": 333,
+      "frame_gap": 1
+    }
+  ],
+  "batch_size_clips": 1,
+  "frames_per_clip": 3,
+  "gradient_accumulation": false,
+  "optimizer_groups_by_stage": {
+    "initial": [
+      {
+        "lr": 0.0001,
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "weight_decay": 1e-05,
+        "amsgrad": false,
+        "maximize": false,
+        "foreach": null,
+        "capturable": false,
+        "differentiable": false,
+        "fused": null,
+        "decoupled_weight_decay": false
+      }
+    ],
+    "appearance": [
+      {
+        "lr": 0.0001,
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "weight_decay": 1e-05,
+        "amsgrad": false,
+        "maximize": false,
+        "foreach": null,
+        "capturable": false,
+        "differentiable": false,
+        "fused": null,
+        "decoupled_weight_decay": false
+      }
+    ],
+    "final": [
+      {
+        "lr": 1e-05,
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "weight_decay": 1e-05,
+        "amsgrad": false,
+        "maximize": false,
+        "foreach": null,
+        "capturable": false,
+        "differentiable": false,
+        "fused": null,
+        "decoupled_weight_decay": false
+      }
+    ]
+  },
+  "global_l2_gradient_clip": 2.5,
+  "learning_rate_scheduler": null,
+  "weights": {
+    "recon": 1.0,
+    "color": 2.0,
+    "edge": 4.0,
+    "smooth": 0.1,
+    "alignment": 0.12155723862208943,
+    "pose": 0.15699390541901015,
+    "residual": 0.00015699390541901016,
+    "flow": 0.0007849695270950507,
+    "matching": 0.09311718595327562
+  },
+  "beta_geo": 0.015699390541901014,
+  "relative_geometric_weights": {
+    "pose": 10.0,
+    "flow": 0.05,
+    "residual": 0.01
+  },
+  "task_ramp": {
+    "steps": 2000,
+    "formula": "min(1, joint_update/2000)"
+  },
+  "degradation": {
+    "gamma": 2.2,
+    "photon_scale": 1000.0,
+    "read_std": 0.001,
+    "quantization": "clip to [0,1], inverse gamma, uint8 truncation",
+    "image_stages": {
+      "attenuation": 0.01
+    },
+    "joint_modes": [
+      {
+        "probability": 0.5,
+        "attenuation": 0.01
+      },
+      {
+        "probability": 0.25,
+        "attenuation": "log-uniform [0.05,0.5]"
+      },
+      {
+        "probability": 0.25,
+        "attenuation": 1.0,
+        "added_noise": false
+      }
+    ]
+  },
+  "matching": {
+    "radius": 2,
+    "temperature": 0.1,
+    "max_points": 256,
+    "feature_stride": 8,
+    "relative_depth_tolerance": 0.05,
+    "absolute_depth_tolerance_m": 0.05,
+    "minimum_depth_m": 0.05,
+    "pairs": "adjacent, both directions"
+  },
+  "geometry": {
+    "iterations": 4,
+    "fixed_poses": 2,
+    "graph": "all directed distinct-frame pairs",
+    "iteration_loss_decay": 0.9,
+    "fit_scale_in_pose_loss": false
+  },
+  "frontend_gate": {
+    "conv_channels": [
+      6,
+      16,
+      1
+    ],
+    "conv_kernel": 3,
+    "leaky_relu_negative_slope": 0.2,
+    "multiplier": "2*sigmoid(logit)",
+    "initial_multiplier": 1.0,
+    "final_conv_initialization": "zeros",
+    "pool_kernel": 3,
+    "pool_stride": 1,
+    "count_include_pad": false,
+    "reflectance_output_clip": [
+      0.0,
+      1.0
+    ]
+  },
+  "preprocessing": {
+    "rgb_resize": "INTER_AREA",
+    "depth_resize": "INTER_NEAREST",
+    "droid_channel_order": "RGB",
+    "frontend_channel_order": "BGR",
+    "droid_mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "droid_std": [
+      0.229,
+      0.224,
+      0.225
+    ],
+    "crop_flip_color_jitter": false
+  },
+  "smoothness_edge_coefficient": 10.0,
+  "sampling": {
+    "appearance_schedule_seed": 20261101,
+    "joint_schedule_seed": 20261102,
+    "appearance_noise_seed_base": 712000000,
+    "joint_noise_seed_base": 813000000,
+    "exposure_selector_seed_suffix": 1109
+  },
+  "gradient_calibration": {
+    "training_clip_seed": 731,
+    "training_clips": 16,
+    "target_gradient_ratio_per_task_group": 0.25,
+    "scale_bounds": [
+      0.001,
+      10
+    ],
+    "scales_relative_to_previous_weights": {
+      "alignment": 0.012155723862208943,
+      "geometry": 0.015699390541901014,
+      "matching": 0.931171859532756
+    }
+  },
+  "checkpoint_selection": "Fixed final training budget; schedule selected using held-out validation.",
+  "validation": {
+    "initialization_every_updates": 500,
+    "initialization_clips": 16,
+    "full_stages_every_updates": 1000,
+    "full_stages_clips": 144,
+    "frame_gap": 2,
+    "noise_seed": "100000+validation_clip_index",
+    "degradation": "fixed extreme"
+  },
+  "hardware": {
+    "cpu": "Intel(R) Core(TM) Ultra 9 285K",
+    "gpu": "NVIDIA GeForce RTX 5090, 570.133.20, 32607 MiB"
+  },
+  "total_lineage_updates": 189064,
+  "image_phase_updates_including_initialization": 96032,
+  "joint_phase_updates": 93032,
+  "frontend_parameters": 238696,
+  "backend_frozen": true,
+  "torch_threads": 2,
+  "cudnn_benchmark": false,
+  "amp_enabled": false,
+  "optimizer_state_policy": "Reset at initialization-to-appearance and appearance-to-joint; preserve optimizer and RNG states across joint continuation segments and worker chunks.",
+  "training_data": {
+    "environments": 18,
+    "available_sequences": 369,
+    "train_sequences": 333,
+    "validation_sequences": 36,
+    "train_frames": 278761,
+    "validation_frames": 27876,
+    "initialization_train_sequences": 12,
+    "initialization_validation_sequences": 4,
+    "native_mode_meaning": "Unattenuated TartanAir frames, not real-world nighttime images."
+  },
+  "scope": "Training hyperparameters for the proposed method.",
+  "software_environment": {
+    "python": "3.11.14 (main, Oct 21 2025, 18:31:21) [GCC 11.2.0]",
+    "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.31",
+    "torch": "2.11.0.dev20251228+cu128",
+    "cuda_build": "12.8",
+    "cudnn": 91002,
+    "numpy": "1.26.4",
+    "opencv": "4.11.0",
+    "adam_defaults": {
+      "lr": 0.001,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "weight_decay": 0,
+      "amsgrad": false,
+      "maximize": false,
+      "foreach": null,
+      "capturable": false,
+      "differentiable": false,
+      "fused": null,
+      "decoupled_weight_decay": false
+    }
+  }
+}
